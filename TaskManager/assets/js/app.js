@@ -72,6 +72,8 @@ function clearAllTasks() {
         taskList.removeChild(taskList.firstChild);
     }
 
+    clearAllTasksfromDB();
+
 }
 
 
@@ -99,8 +101,10 @@ function removeTask(e) {
     if (e.target.parentElement.classList.contains('delete-item')) {
         if (confirm('Are You Sure about that ?')) {
             e.target.parentElement.parentElement.remove();
-
         }
+
+        //Remove from DB(Local Storage)
+        removefromDB(e.target.parentElement.parentElement);
 
     }
 }
@@ -125,7 +129,7 @@ function loadTasksfromDB() {
             li.appendChild(document.createTextNode(eachTask)); //create text node and append it
             const link = document.createElement('a'); //Create new element for the link
             link.className = 'delete-item secondary-content'; //Add class and the x marker for a
-            link.innerHTML = <i class = "fa fa-remove"></i>;
+            link.innerHTML = '<i class = "fa fa-remove"></i>';
             li.appendChild(link); //Append link to li
             taskList.appendChild(li); //Append to UL
 
@@ -133,3 +137,4 @@ function loadTasksfromDB() {
         
     }
 }
+
