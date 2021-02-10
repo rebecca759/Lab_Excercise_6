@@ -6,7 +6,7 @@ const form = document.querySelector('#task-form'); //The form at the top
 const filter = document.querySelector('#filter'); //the task filter text field
 const taskList = document.querySelector('.collection'); //The UL
 const clearBtn = document.querySelector('.clear-tasks'); //the all task clear button
-let sort_button = document.querySelector('#dropdown1'); //the drop down for sorting
+let sort_button = document.querySelector('#sort'); //the drop down for sorting
 const reloadIcon = document.querySelector('.fa'); //the reload button at the top navigation 
 
 
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let objectStore = DB.transaction('tasks').objectStore('tasks');
         let sort_order = ''
 
-        if (sort.value == 'ascend') {
+        if (sort_button.value == 'ascend') {
             sort_order = "next"
         } else {
             sort_order = "prev"
